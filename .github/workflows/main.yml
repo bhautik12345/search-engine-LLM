@@ -1,20 +1,32 @@
-name: Sync to Hugging Face hub
+name: Sync to Hugging Face Hub
+
 on:
   push:
-    branches: [main]
+    branches:
+      - main  # Change if your branch name is different
 
-  # to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-          lfs: true
-      - name: Push to hub
+          fetch-depth: 0  # Ensures full history is fetched
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "220130107015@gecg28.ac.in"
+          git config --global user.name "bhautik12345"
+
+      - name: Push to Hugging Face Hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push https://Bvadaliya3005:$HF_TOKEN@huggingface.co/spaces/Bvadaliya3005/search-engine-LLM main
+        run: |
+          git remote add hf https://Bvadaliya3005:$HF_TOKEN@huggingface.co/spaces/Bvadaliya3005/search-engine-LLM main
+          git fetch hf
+          git push --force hf main
+
