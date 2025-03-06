@@ -20,8 +20,6 @@ openai
 langchain-groq
 duckduckgo-search
 pymupdf
-arxiv
-wikipedia
 mysql-connector-python
 SQLAlchemy
 validators==0.28.1
