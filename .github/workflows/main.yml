@@ -20,8 +20,9 @@ jobs:
         run: |
           git remote add hf https://Bvadaliya3005:$HF_TOKEN@huggingface.co/spaces/Bvadaliya3005/search-engine-LLM || true
           git fetch hf
-          git pull --rebase hf main 
+          git pull --rebase hf main  # Ensure latest changes before push
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: git push https://Bvadaliya3005:$HF_TOKEN@huggingface.co/spaces/Bvadaliya3005/search-engine-LLM main
+
