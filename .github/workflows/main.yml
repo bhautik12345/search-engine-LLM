@@ -14,6 +14,13 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - name: Pull latest changes from Hugging Face Hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git remote add hf https://Bvadaliya3005:$HF_TOKEN@huggingface.co/spaces/Bvadaliya3005/search-engine-LLM || true
+          git fetch hf
+          git pull --rebase hf main 
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
