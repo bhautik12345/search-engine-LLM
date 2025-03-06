@@ -11,10 +11,10 @@ import streamlit as st
 
 load_dotenv()
 
-arxiv_api_wrapper = ArxivAPIWrapper(top_k_results=1,doc_content_chars_max=400)
+arxiv_api_wrapper = ArxivAPIWrapper(top_k_results=1,doc_content_chars_max=300)
 arxiv = ArxivQueryRun(api_wrapper=arxiv_api_wrapper)
 
-wiki_api_wrapper = WikipediaAPIWrapper(top_k_results=1,doc_content_chars_max=400)
+wiki_api_wrapper = WikipediaAPIWrapper(top_k_results=1,doc_content_chars_max=300)
 wiki = WikipediaQueryRun(api_wrapper=wiki_api_wrapper)
 
 search = DuckDuckGoSearchRun(name='Search')
